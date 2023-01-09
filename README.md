@@ -17,8 +17,8 @@ This package has been tested on Ubuntu 20.04 with ROS2 Foxy
 ## Build
 ```bash 
    # create a new ros2 workspace 
-   mkdir ~/allan_ws/src 
-   cd ~/allan_ws/src
+   mkdir ~/allan_ws && cd ~/allan_ws
+   mkdir src && cd src
    
    # clone 'px4_msgs' 
    git clone https://github.com/PX4/px4_msgs.git
