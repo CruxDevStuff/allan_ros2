@@ -5,10 +5,6 @@
 using namespace imu;
 using namespace std::chrono;
 
-/*
-function adapted from (https://github.com/ori-drs/allan_variance_ros/blob/5b08a118bffbf68995f09ce3e3bbf31f78f2f606/src/AllanVarianceComputor.cpp#L123-L186)
-*/
-
 namespace compute {
 
     void allan_variance(const int& sample_rate) {
