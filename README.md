@@ -20,7 +20,7 @@ This package has been tested on Ubuntu 20.04 with ROS2 Foxy
    mkdir ~/allan_ws/src 
    cd ~/allan_ws/src
    
-   # clone 'px4_msgs' (optional) skip if not using VehicleImuStatus.msg
+   # clone 'px4_msgs' 
    git clone https://github.com/PX4/px4_msgs.git
    
    # clone the package
