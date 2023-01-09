@@ -1,0 +1,7 @@
+build 
+.vscode
+__pycache__/
+bags
+outputs
+config/dev_config.yaml
+

@@ -1,0 +1,7 @@
+allan_node:
+  ros__parameters:
+     topic: # /your/topic 
+     bag_path: # /path/to/bag.db3 
+     msg_type: ros 
+     publish_rate: # your imu publish rate (hz)
+     sample_rate: # rate to sample data from the bag (hz) Higher sample counts take longer to compute 

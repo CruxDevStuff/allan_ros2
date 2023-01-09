@@ -1,0 +1,7 @@
+allan_node:
+  ros__parameters:
+     topic: /fmu/out/vehicle_imu_status
+     bag_path: # /path/to/bag.db3
+     msg_type: px4 
+     publish_rate: 10  
+     sample_rate: 10 
