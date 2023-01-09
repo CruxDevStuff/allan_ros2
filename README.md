@@ -98,8 +98,8 @@ accelerometer_random_walk:   4.33e-04   # bias random walk
 gyroscope_noise_density:     1.87e-04   # noise density (continuous-time)
 gyroscope_random_walk:       2.66e-05   # bias random walk
 
-rostopic:                               # imu topic
-update_rate:                            # imu publish rate (hz)
+rostopic:                               # fill your imu topic
+update_rate:                            # fill your imu publish rate (hz)
 ```
 ### Plots
 <img src="assets/gyro.png"/>
