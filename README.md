@@ -45,6 +45,7 @@ allan_node:
      publish_rate: # your imu publish rate (hz) 
      sample_rate: # rate to sample data from bag. Higher sample rates take longer to compute 
 ```
+Note : Requires rebuilding after configuration ```colcon build --packages-select allan_ros2```. This will be fixed in a future release.
 ## Run 
 Launch the node 
 ```bash
