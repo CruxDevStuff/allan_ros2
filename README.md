@@ -48,6 +48,9 @@ allan_node:
 ## Run 
 Launch the node 
 ```bash
+   # requires building after changing config
+   colcon build --packages-select allan_ros2
+   
    # source the workspace 
    source ~/allan_ws/install/setup.bash
    
