@@ -6,7 +6,7 @@ Note : This package is under development. If you find any bugs or errors create 
 
 # Features 
 1. Outputs noise parameters file for use with [Kalibr](https://github.com/ethz-asl/kalibr), Follows the [IMU Noise Model](https://github.com/ethz-asl/kalibr/wiki/IMU-Noise-Model).
-2. Supports both ```sensor_msgs/Imu.msg``` and ```px4_msgs/VehicleImuStatus.msg``` for use with PX4-ROS2 stack, No conversion required.
+2. Supports both ```sensor_msgs/Imu.msg``` and ```px4_msgs/VehicleImuStatus.msg``` to read PX4-ROS2 bags, No conversion required.
 3. Uses ```rosbag2_cpp``` API to sample data from bag, No playback and waiting for hours. 
 
 
