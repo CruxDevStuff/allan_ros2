@@ -35,7 +35,7 @@ This package has been tested on Ubuntu 20.04 with ROS2 Foxy
    colcon build 
 ```
 ## Configure
-Populate the parameters in ```allan_ros2/config/config.yaml``` with the appropriate values for you bag. [example configuration files](https://github.com/CruxDevStuff/allan_ros2_dev/tree/main/config)
+Populate the parameters in ```~/allan_ws/src/allan_ros2/config/config.yaml``` with the appropriate values for you bag. [example configuration files](https://github.com/CruxDevStuff/allan_ros2_dev/tree/main/config)
 ```yaml
 allan_node:
   ros__parameters:
@@ -83,8 +83,8 @@ The node outputs ```deviation.csv``` and contains the computed raw deviation val
 78.40000000000000568, 0.0007518549, 0.003035895, 0.001149335, 0.00116584,  0.00140981,  0.001331341
 ```
 ### Noise parameters
-To obtain the noise paramaters run ```analyse.py``` with deviation data. 
-```analyse.py``` outputs ```imu.yaml``` and deviation plots. ```imu.yaml``` contains the ```random_walk``` and ```noise_density``` values for the IMU and follows the kalibr [IMU Noise Model](https://github.com/ethz-asl/kalibr/wiki/IMU-Noise-Model) 
+To obtain the noise paramaters run ```analysis.py``` with deviation data. 
+```analysis.py``` outputs ```imu.yaml``` and deviation plots. ```imu.yaml``` contains the ```random_walk``` and ```noise_density``` values for the IMU and follows the kalibr [IMU Noise Model](https://github.com/ethz-asl/kalibr/wiki/IMU-Noise-Model) 
 ```bash
 python3 src/allan_ros2/scripts/analysis.py --data deviation.csv
 ```
