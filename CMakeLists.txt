@@ -17,6 +17,7 @@ find_package(ament_index_cpp REQUIRED)
 find_package(OpenMP REQUIRED)
 find_package(builtin_interfaces REQUIRED)
 find_package(px4_msgs REQUIRED)
+find_package(Eigen3 REQUIRED)
 
 include_directories(include)
 
@@ -27,6 +28,7 @@ rosbag2_cpp
 sensor_msgs
 px4_msgs 
 ament_index_cpp
+Eigen3
 )
 
 set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
