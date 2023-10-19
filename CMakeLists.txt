@@ -19,7 +19,8 @@ find_package(builtin_interfaces REQUIRED)
 find_package(px4_msgs REQUIRED)
 find_package(Eigen3 REQUIRED)
 
-include_directories(include)
+include_directories(include
+${EIGEN3_INCLUDE_DIR})
 
 set(DEPS
 rclcpp

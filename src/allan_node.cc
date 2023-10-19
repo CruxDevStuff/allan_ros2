@@ -18,11 +18,11 @@ namespace allan_ros {
     AllanNode::~AllanNode() {}
 
     void AllanNode::initialize_parameters() {
-        this->declare_parameter("topic");
-        this->declare_parameter("bag_path");
-        this->declare_parameter("publish_rate");
-        this->declare_parameter("sample_rate");
-        this->declare_parameter("msg_type");
+        this->declare_parameter("topic", "/imu");
+        this->declare_parameter("bag_path", "bag");
+        this->declare_parameter("publish_rate", 10);
+        this->declare_parameter("sample_rate", 10);
+        this->declare_parameter("msg_type", "ros");
     }
 
     void AllanNode::configure_parameters() {
@@ -70,9 +70,17 @@ namespace allan_ros {
         imu::sample_buffer.emplace_back(measurement);  
     }
 
+    static bool endsWith(std::string_view str, std::string_view suffix)
+	{
+		return str.size() >= suffix.size() && 0 == str.compare(str.size()-suffix.size(), suffix.size(), suffix);
+	}
+
     void AllanNode::process_bag() {
         bag_storage_options.uri = bag_path.as_string();
-        bag_storage_options.storage_id = "sqlite3";
+        if (endsWith(bag_path.as_string(), "mcap"))
+	        bag_storage_options.storage_id = "mcap";
+	    else
+	        bag_storage_options.storage_id = "sqlite3";
         
         bag_converter_options.input_serialization_format = rmw_get_serialization_format();
         bag_converter_options.output_serialization_format = rmw_get_serialization_format();
