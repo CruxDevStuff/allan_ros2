@@ -1,7 +1,7 @@
 #include <iostream>
 #include "allan_ros2/write.hpp"
 
-namespace write {
+namespace allan_write {
     void allan_deviation(std::vector<double> deviation, double period) {
         AllanDeviationFormat deviation_format;
         deviation_format.period = period; 

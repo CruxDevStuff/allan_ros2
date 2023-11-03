@@ -6,7 +6,7 @@
 #include <iomanip>
 
 
-namespace write {
+namespace allan_write {
     struct AllanDeviationFormat {
         double period;
         double acc_x;

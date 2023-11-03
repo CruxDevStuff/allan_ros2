@@ -84,7 +84,7 @@ namespace compute {
             allan_deviation = {std::sqrt(avar[0]), std::sqrt(avar[1]), std::sqrt(avar[2]),
                                                 std::sqrt(avar[3]), std::sqrt(avar[4]), std::sqrt(avar[5])};
 
-            write::allan_deviation(allan_deviation, period_time);
+            allan_write::allan_deviation(allan_deviation, period_time);
         }
 
     }
