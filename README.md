@@ -12,7 +12,7 @@ Note : This package is under development. If you find any bugs or errors create 
 
 # Usage 
 
-This package has been tested on Ubuntu 20.04 with ROS2 Foxy 
+This package has been tested with ROS2 Foxy and Humble
 
 ## Build
 ```bash 
