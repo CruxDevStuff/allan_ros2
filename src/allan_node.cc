@@ -70,17 +70,18 @@ namespace allan_ros {
         imu::sample_buffer.emplace_back(measurement);  
     }
 
-    static bool endsWith(std::string_view str, std::string_view suffix)
-	{
-		return str.size() >= suffix.size() && 0 == str.compare(str.size()-suffix.size(), suffix.size(), suffix);
-	}
+    static bool ends_with(std::string_view str, std::string_view suffix) {
+	return str.size() >= suffix.size() && 0 == str.compare(str.size()-suffix.size(), suffix.size(), suffix);
+    }
 
     void AllanNode::process_bag() {
         bag_storage_options.uri = bag_path.as_string();
-        if (endsWith(bag_path.as_string(), "mcap"))
+
+        if (ends_with(bag_path.as_string(), "mcap")) {
 	        bag_storage_options.storage_id = "mcap";
-	    else
-	        bag_storage_options.storage_id = "sqlite3";
+	} else {
+		bag_storage_options.storage_id = "sqlite3";
+	}
         
         bag_converter_options.input_serialization_format = rmw_get_serialization_format();
         bag_converter_options.output_serialization_format = rmw_get_serialization_format();
