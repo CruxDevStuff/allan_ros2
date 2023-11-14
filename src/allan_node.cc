@@ -38,9 +38,10 @@ namespace allan_ros {
         // TODO : check all parameters are in the right format  
     }
 
-    void AllanNode::deserialize_px4(rclcpp::SerializedMessage& serialized_msg) {
-        rclcpp::Serialization<px4_imu> serialization;
-        px4_imu deserialized_msg;
+    void AllanNode::deserialize_px4_vehicle_imu_status(rclcpp::SerializedMessage& serialized_msg) {
+        rclcpp::Serialization<px4_vehicle_imu_status> serialization;
+        px4_vehicle_imu_status deserialized_msg;
+
         serialization.deserialize_message(&serialized_msg, &deserialized_msg);
 
         imu::SampleFormat measurement;
@@ -50,6 +51,23 @@ namespace allan_ros {
 
         measurement.angular_vel = Eigen::Vector3d(deserialized_msg.mean_gyro[0], 
                                                 deserialized_msg.mean_gyro[1], deserialized_msg.mean_gyro[2]); 
+
+        imu::sample_buffer.emplace_back(measurement);
+    }
+
+    void AllanNode::deserialize_px4_sensor_combined(rclcpp::SerializedMessage& serialized_msg) {
+        rclcpp::Serialization<px4_sensor_combined> serialization;
+        px4_sensor_combined deserialized_msg;
+
+        serialization.deserialize_message(&serialized_msg, &deserialized_msg);
+
+        imu::SampleFormat measurement;
+        measurement.time_stamp = deserialized_msg.timestamp;
+        measurement.linear_accel = Eigen::Vector3d(deserialized_msg.accelerometer_m_s2[0],
+                                                deserialized_msg.accelerometer_m_s2[1], deserialized_msg.accelerometer_m_s2[2]);
+
+        measurement.angular_vel = Eigen::Vector3d(deserialized_msg.gyro_rad[0], 
+                                                deserialized_msg.gyro_rad[1], deserialized_msg.gyro_rad[2]); 
 
         imu::sample_buffer.emplace_back(measurement);
     }
@@ -71,7 +89,7 @@ namespace allan_ros {
     }
 
     static bool ends_with(std::string_view str, std::string_view suffix) {
-	return str.size() >= suffix.size() && 0 == str.compare(str.size()-suffix.size(), suffix.size(), suffix);
+	    return str.size() >= suffix.size() && 0 == str.compare(str.size()-suffix.size(), suffix.size(), suffix);
     }
 
     void AllanNode::process_bag() {
@@ -126,9 +144,11 @@ namespace allan_ros {
 
                 if (msg_type.as_string() == "ros") {
                     deserialize_ros(serialized_msg);
-                } else if (msg_type.as_string() == "px4") {
-                    deserialize_px4(serialized_msg);
-                } else {
+                } else if (msg_type.as_string() == "px4_vehicleimustatus") {
+                    deserialize_px4_vehicle_imu_status(serialized_msg);
+                } else if (msg_type.as_string() == "px4_sensorcombined") {
+                    deserialize_px4_sensor_combined(serialized_msg);
+		        } else {
                     RCLCPP_ERROR(get_logger(), "Unknown message type, check 'config.yaml'");
                 }
             }

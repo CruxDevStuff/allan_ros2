@@ -9,6 +9,7 @@
 #include "allan_ros2/write.hpp"
 #include "rosbag2_cpp/reader.hpp"
 #include "px4_msgs/msg/vehicle_imu_status.hpp"
+#include "px4_msgs/msg/sensor_combined.hpp"
 
 namespace allan_ros {
     class AllanNode : public rclcpp::Node {
@@ -20,7 +21,8 @@ namespace allan_ros {
         void initialize_parameters();
         void configure_parameters();
         void deserialize_ros(rclcpp::SerializedMessage& serialized_msg);
-        void deserialize_px4(rclcpp::SerializedMessage& serialized_msg);
+        void deserialize_px4_vehicle_imu_status(rclcpp::SerializedMessage& serialized_msg);
+        void deserialize_px4_sensor_combined(rclcpp::SerializedMessage& serialized_msg);
         void process_bag();
 
         rclcpp::Parameter imu_topic;
@@ -43,7 +45,8 @@ namespace allan_ros {
         rosbag2_storage::BagMetadata bag_info;
         std::chrono::seconds bag_length;
 
-        using px4_imu = px4_msgs::msg::VehicleImuStatus;
+        using px4_vehicle_imu_status = px4_msgs::msg::VehicleImuStatus;
+        using px4_sensor_combined = px4_msgs::msg::SensorCombined;
         using ros_imu = sensor_msgs::msg::Imu;
     };
 }
