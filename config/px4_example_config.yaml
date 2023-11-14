@@ -1,7 +1,7 @@
 allan_node:
   ros__parameters:
-     topic: /fmu/out/vehicle_imu_status
+     topic: # /fmu/out/sensor_combined / fmu/out/vehicle_imu_status
      bag_path: # /path/to/bag.db3
-     msg_type: px4 
-     publish_rate: 10  
-     sample_rate: 10 
+     msg_type: # px4_sensorcombined  / px4_vehicleimustatus
+     publish_rate: # 200  
+     sample_rate: # 200

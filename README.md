@@ -6,7 +6,7 @@ Note : This package is under development. If you find any bugs or errors create 
 
 # Features 
 1. Outputs noise parameters file for use with [Kalibr](https://github.com/ethz-asl/kalibr), Follows the [Kalibr IMU Noise Model](https://github.com/ethz-asl/kalibr/wiki/IMU-Noise-Model).
-2. Supports both ```sensor_msgs/Imu.msg``` and ```px4_msgs/VehicleImuStatus.msg``` to read PX4-ROS2 bags, No conversion required.
+2. Supports ```sensor_msgs/Imu```, ```px4_msgs/SensorCombined```, ```px4_msgs/VehicleImuStatus``` to read PX4-ROS2 bags, No conversion required.
 
 # Usage 
 
@@ -39,8 +39,8 @@ allan_node:
   ros__parameters:
      topic: # /your/topic 
      bag_path: # path/to/bag.db3
-     msg_type: # use 'ros' for sensor_msgs::msg::Imu, use 'px4' for px4_msgs::msg::VehicleImuStatus
-     publish_rate: # your imu publish rate (hz) 
+     msg_type: # use 'ros' / 'px4_sensorcombined' / 'px4_vehicleimustatus' 
+     publish_rate: # imu publish rate (hz) 
      sample_rate: # rate to sample data from bag. Higher sample rates take longer to compute 
 ```
 Note : Requires rebuilding after configuration ```colcon build --packages-select allan_ros2```. This will be fixed in a future release.
