@@ -18,9 +18,13 @@ def line_func(x, m, b):
 	return m * x + b
 
 def get_intercept(x, y, m, b):
+	# Filter out non-positive and non-finite values
+	mask = (x > 0) & (y > 0) & np.isfinite(x) & np.isfinite(y)
+	x_filtered = x[mask]
+	y_filtered = y[mask]
 
-	logx = np.log(x)
-	logy = np.log(y)
+	logx = np.log(x_filtered)
+	logy = np.log(y_filtered)
 	coeffs, _ = curve_fit(line_func, logx, logy, bounds=([m, -np.inf], [m + 0.001, np.inf]))
 	poly = np.poly1d(coeffs)
 	yfit = lambda x: np.exp(poly(np.log(x)))
@@ -107,13 +111,20 @@ accel_rr_intercept_y, yfit_rr = get_intercept(period, acceleration[:,1], 0.5, 3.
 accel_rr_intercept_z, zfit_rr = get_intercept(period, acceleration[:,2], 0.5, 3.0)
 
 
-accel_min_x = np.amin(acceleration[:,0])
-accel_min_y = np.amin(acceleration[:,1])
-accel_min_z = np.amin(acceleration[:,2])
+# For X
+valid_x = np.isfinite(acceleration[:,0])
+accel_min_x = np.amin(acceleration[valid_x,0])
+accel_min_x_index = np.where(valid_x)[0][np.argmin(acceleration[valid_x,0])]
 
-accel_min_x_index = np.argmin(acceleration[:,0])
-accel_min_y_index = np.argmin(acceleration[:,1])
-accel_min_z_index = np.argmin(acceleration[:,2])
+# For Y
+valid_y = np.isfinite(acceleration[:,1])
+accel_min_y = np.amin(acceleration[valid_y,1])
+accel_min_y_index = np.where(valid_y)[0][np.argmin(acceleration[valid_y,1])]
+
+# For Z
+valid_z = np.isfinite(acceleration[:,2])
+accel_min_z = np.amin(acceleration[valid_z,2])
+accel_min_z_index = np.where(valid_z)[0][np.argmin(acceleration[valid_z,2])]
 
 yaml_file = open("imu.yaml", "w")
 
@@ -198,13 +209,21 @@ gyro_rr_intercept_x, xfit_rr = get_intercept(period, rotation_rate[:,0], 0.5, 3.
 gyro_rr_intercept_y, yfit_rr = get_intercept(period, rotation_rate[:,1], 0.5, 3.0)
 gyro_rr_intercept_z, zfit_rr = get_intercept(period, rotation_rate[:,2], 0.5, 3.0)
 
-gyro_min_x = np.amin(rotation_rate[:,0])
-gyro_min_y = np.amin(rotation_rate[:,1])
-gyro_min_z = np.amin(rotation_rate[:,2])
+# For X
+valid_gyro_x = np.isfinite(rotation_rate[:,0])
+gyro_min_x = np.amin(rotation_rate[valid_gyro_x,0])
+gyro_min_x_index = np.where(valid_gyro_x)[0][np.argmin(rotation_rate[valid_gyro_x,0])]
 
-gyro_min_x_index = np.argmin(rotation_rate[:,0])
-gyro_min_y_index = np.argmin(rotation_rate[:,1])
-gyro_min_z_index = np.argmin(rotation_rate[:,2])
+# For Y
+valid_gyro_y = np.isfinite(rotation_rate[:,1])
+gyro_min_y = np.amin(rotation_rate[valid_gyro_y,1])
+gyro_min_y_index = np.where(valid_gyro_y)[0][np.argmin(rotation_rate[valid_gyro_y,1])]
+
+# For Z
+valid_gyro_z = np.isfinite(rotation_rate[:,2])
+gyro_min_z = np.amin(rotation_rate[valid_gyro_z,2])
+gyro_min_z_index = np.where(valid_gyro_z)[0][np.argmin(rotation_rate[valid_gyro_z,2])]
+
 
 print("GYROSCOPE:")
 print(f"X Angle Random Walk: {gyro_wn_intercept_x: .5f} deg/sqrt(s) {gyro_wn_intercept_x * 60: .5f} deg/sqrt(hr)")
