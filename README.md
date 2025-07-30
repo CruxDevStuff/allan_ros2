@@ -13,7 +13,7 @@ Note : This package is under development. If you find any bugs or errors create 
 
 This package has been tested with ROS2 Foxy and Humble
 
-For ROS2 Jazzy switch to this [branch](https://github.com/CruxDevStuff/allan_ros2/edit/jazzy/README.md)
+For ROS2 Jazzy switch to this [branch](https://github.com/CruxDevStuff/allan_ros2/tree/jazzy?tab=readme-ov-file)
 
 ## Build
 ```bash 
