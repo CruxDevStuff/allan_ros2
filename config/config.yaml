@@ -1,7 +1,7 @@
 allan_node:
   ros__parameters:
-     topic: /fmu/out/sensor_combined  # /your/topic 
-     bag_path: /home/crux/Development/pixracerpro_px4_imu_rosbag/sleepy_imu.mcap # path/to/bag.db3
-     msg_type: px4_sensorcombined # use 'ros' for sensor_msgs::msg::Imu, use 'px4' for px4_msgs::msg::VehicleImuStatus
-     publish_rate: 175 # your imu publish rate (hz) 
-     sample_rate: 175 # rate to sample data from bag. Higher sample rates take longer to compute 
+     topic: /imu/data_raw  # /your/topic 
+     bag_path: /home/nathan/vicon/rosbag2_2025_04_17-12_58_45/rosbag2_2025_04_17-12_58_45_0.mcap # path/to/bag.db3
+     msg_type: ros # use 'ros' for sensor_msgs::msg::Imu, use 'px4' for px4_msgs::msg::VehicleImuStatus
+     publish_rate: 45 # your imu publish rate (hz) 
+     sample_rate: 45 # rate to sample data from bag. Higher sample rates take longer to compute 

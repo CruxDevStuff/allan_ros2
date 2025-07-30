@@ -2,7 +2,7 @@
 #include "rclcpp/rclcpp.hpp"
 #include "sensor_msgs/msg/imu.hpp"
 #include "rosbag2_cpp/readers/sequential_reader.hpp"
-#include "rosbag2_cpp/storage_options.hpp"
+#include "rosbag2_storage/storage_options.hpp"
 #include "rosbag2_cpp/converter_options.hpp"
 #include "rclcpp/serialization.hpp"
 #include "allan_ros2/compute.hpp"
@@ -39,7 +39,7 @@ namespace allan_ros {
         uint64_t current_timestamp; 
         uint64_t last_timestamp;
 
-        rosbag2_cpp::StorageOptions bag_storage_options;
+        rosbag2_storage::StorageOptions bag_storage_options;
         rosbag2_cpp::ConverterOptions bag_converter_options;
         rosbag2_cpp::readers::SequentialReader bag_reader;
         rosbag2_storage::BagMetadata bag_info;

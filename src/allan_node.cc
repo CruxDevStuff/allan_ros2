@@ -130,8 +130,8 @@ namespace allan_ros {
 
                 if (first_msg) {
                     first_msg = false;
-                    current_timestamp = bag_message->time_stamp;
-                    last_timestamp = bag_message->time_stamp;
+                    current_timestamp = bag_message->recv_timestamp;
+                    last_timestamp = bag_message->recv_timestamp;
                 }
 
                 if (current_timestamp < last_timestamp) {

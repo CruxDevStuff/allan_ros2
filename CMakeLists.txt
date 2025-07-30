@@ -12,6 +12,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rclcpp_components REQUIRED)
 find_package(rosbag2_cpp REQUIRED)
+find_package(rosbag2_storage REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(ament_index_cpp REQUIRED)
 find_package(OpenMP REQUIRED)
@@ -26,6 +27,7 @@ set(DEPS
 rclcpp
 std_msgs
 rosbag2_cpp
+rosbag2_storage
 sensor_msgs
 px4_msgs 
 ament_index_cpp

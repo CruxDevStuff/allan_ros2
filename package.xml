@@ -13,6 +13,7 @@
   <depend>std_msgs</depend>
   <depend>sensor_msgs</depend>
   <depend>rosbag2_cpp</depend>
+  <depend>rosbag2_storage</depend>
   <depend>ament_index_cpp</depend>
   <depend>px4_msgs</depend>
 
