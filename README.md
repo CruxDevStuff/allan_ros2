@@ -4,6 +4,7 @@ ROS2 package for analysing noise parameters in IMU's using allan deviation. Desi
 
 Note : This package is under development. If you find any bugs or errors create an issue, or even better a PR fixing it.
 
+
 # Features 
 1. Outputs noise parameters file for use with [Kalibr](https://github.com/ethz-asl/kalibr), Follows the [Kalibr IMU Noise Model](https://github.com/ethz-asl/kalibr/wiki/IMU-Noise-Model).
 2. Supports ```sensor_msgs/Imu```, ```px4_msgs/SensorCombined```, ```px4_msgs/VehicleImuStatus``` to read PX4-ROS2 bags, No conversion required.
@@ -11,6 +12,8 @@ Note : This package is under development. If you find any bugs or errors create 
 # Usage 
 
 This package has been tested with ROS2 Foxy and Humble
+
+For ROS2 Jazzy switch to this [branch](https://github.com/CruxDevStuff/allan_ros2/edit/jazzy/README.md)
 
 ## Build
 ```bash 
